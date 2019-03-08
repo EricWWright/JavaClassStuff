@@ -1,0 +1,29 @@
+package ch14examples;
+import java.util.*;
+
+public class ListExamples {
+
+	public static void main(String[] args) {
+//		Integer myInt = new Integer(3);
+//		Collection<Integer> myCollection = new Collection<Integer>;
+//		myCollection.add(myInt);
+//		myCollection.add(15);
+//		myCollection.add(42);
+//		myCollection.add(52);
+//		myCollection.remove(0);
+//		
+//		int x = myCollection.size();
+//		System.out.println(x);
+//		
+//		myCollection.clear();
+//		myCollection.isEmpty();
+		
+		ArrayList<String> students = new ArrayList<String>();
+		students.add("Sue");  // the list contains "Sue"
+		students.add("Joe");  // the list contains "Sue", "Joe"
+		int joeIndex = students.indexOf("Joe");  // joeIndex = 1
+		students.remove("Sue");                  // the list now contains "Joe"
+
+	}
+
+}

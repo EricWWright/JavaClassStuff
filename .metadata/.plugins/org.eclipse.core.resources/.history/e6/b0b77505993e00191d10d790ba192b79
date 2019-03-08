@@ -1,0 +1,39 @@
+package ch14examples;
+
+import java.util.LinkedList;
+
+public class Contact {
+	public String name;
+	public String number;
+	
+	// Contact Constructor
+	Contact( String n, String num ) {
+		name = n;
+		number = num;
+	}
+
+	public static void main(String[] args) {
+		// old array code commented out or deleted
+
+		// create LinkedList 
+		LinkedList<String> contactList = new LinkedList<String>();
+
+		// add 5 Contacts to list 
+		contactList.add(new Contact( "George Washington", "(800) 555-1234" )); 
+		contactList.add(new Contact( "John Adams", "(800) 555-4567" ));
+		contactList.add(new Contact( "Thomas Jefferson", "(800) 555-7890" ));
+		contactList.add(new Contact( "James Madison", "(800) 555-3456" ));
+		contactList.add(new Contact( "James Monroe", "(800) 555-2345" ));
+
+
+		// get first and last Contact from list
+		Contact first = (Contact)contactList.getFirst();
+		Contact last = (Contact)contactList.getLast();
+
+		// print out contact info
+		System.out.println(first.name + ": " + first.number );
+		System.out.println(last.name + ": " + last.number );
+
+	}
+
+}

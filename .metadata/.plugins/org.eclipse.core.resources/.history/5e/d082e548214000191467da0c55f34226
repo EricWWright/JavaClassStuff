@@ -1,0 +1,168 @@
+package pizzaPlace;
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.*;
+
+@SuppressWarnings({ "unused", "serial" })
+public class PizzaPlace extends JFrame implements ActionListener {
+	JPanel mainPanel;
+	JPanel customerNamePanel;
+	JTextField customerName;
+	JLabel userLable;
+	
+	JPanel radioButtonsPanel;
+	JLabel pizzaSizeLabel;
+	JRadioButton small;
+	JRadioButton medium;
+	JRadioButton large;
+	
+	JPanel crustPanel;
+	JLabel crustTypeLabel;
+	JComboBox<String> crust;
+	String[] crustTypes = { "Thin", "Thick", "Deep Dish" };
+	
+	JPanel toppingsPanel;
+	JLabel toppingsLabel;
+	JList<String> toppings;
+	String[] toppingsList = { "Pepperoni", "Sausage", "Green Peppers", "Onions", 
+			"Tomatoes", "Anchovies", "Bacon", "Chicken", "Beef", "Olives", "Mushrooms" };
+	JScrollPane toppingsScroll;
+	
+	JPanel extraPanel;
+	JLabel extraLabel;
+	JCheckBox breadStick;
+	JCheckBox salad;
+	JCheckBox soda;
+	
+	JPanel commentsPanel;
+	JLabel commentsLabel;
+	JTextArea comments;
+	JScrollPane commentsScroll;
+	
+	JPanel bottomButtons;
+	JButton orderButton;
+	JButton resetButton;
+
+	public static void main(String[] args) {
+		new PizzaPlace();
+
+	}
+	
+	public PizzaPlace() {
+		
+		JFrame myFrame = new JFrame("Pizza Place");
+	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainPanel = (JPanel)myFrame.getContentPane();
+	    
+	    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+	    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    
+	    customerNamePanel = new JPanel();
+	    userLable = new JLabel("Customer Name:");
+	    customerNamePanel.add(userLable);
+	    customerName = new JTextField("", 20);
+	    customerNamePanel.add(customerName);
+	    mainPanel.add(customerNamePanel);
+	    
+	    radioButtonsPanel = new JPanel();
+	    pizzaSizeLabel = new JLabel("Pizza Size:");
+	    radioButtonsPanel.add(pizzaSizeLabel);
+	    ButtonGroup radioGroup = new ButtonGroup();
+	    small = new JRadioButton("Small");
+	    medium = new JRadioButton("Medium");
+	    large = new JRadioButton("Large");
+	    radioGroup.add(small);
+	    radioGroup.add(medium);
+	    radioGroup.add(large);
+	    radioButtonsPanel.add(small);
+	    radioButtonsPanel.add(medium);
+	    radioButtonsPanel.add(large);
+	    mainPanel.add(radioButtonsPanel);
+	    
+	    crustPanel = new JPanel();
+	    crustTypeLabel = new JLabel("Crust Type:");
+	    crustPanel.add(crustTypeLabel);
+	    crust = new JComboBox<String>(crustTypes);
+	    crustPanel.add(crust);
+	    mainPanel.add(crustPanel);
+	    
+	    toppingsPanel = new JPanel();
+	    toppingsLabel = new JLabel("Toppings:");
+	    toppingsPanel.add(toppingsLabel);
+	    toppings = new JList<String>(toppingsList);
+	    toppings.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+	    toppingsScroll = new JScrollPane(toppings);
+	    //toppingsScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    toppingsPanel.add(toppingsScroll);
+	    mainPanel.add(toppingsPanel);
+	    
+	    extraPanel = new JPanel();
+	    extraLabel = new JLabel("Extras:");
+	    extraPanel.add(extraLabel);
+	    breadStick = new JCheckBox("BreadSticks");
+	    extraPanel.add(breadStick);
+	    salad = new JCheckBox("Salad");
+	    extraPanel.add(salad);
+	    soda = new JCheckBox("Soda");
+	    extraPanel.add(soda);
+	    mainPanel.add(extraPanel);
+	    
+	    commentsPanel = new JPanel();
+	    commentsLabel = new JLabel("Order Comments:");
+	    commentsPanel.add(commentsLabel);
+	    comments = new JTextArea(5, 20);
+	    comments.setLineWrap(true);
+	    commentsScroll = new JScrollPane(comments);
+	    //toppingsScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    commentsPanel.add(commentsScroll);
+	    mainPanel.add(commentsPanel);
+	    
+	    bottomButtons = new JPanel();
+	    orderButton = new JButton("Place Oreder");
+	    orderButton.addActionListener(this);
+	    bottomButtons.add(orderButton);
+	    resetButton = new JButton("Reset Values");
+	    resetButton.addActionListener(this);
+	    bottomButtons.add(resetButton);
+	    mainPanel.add(bottomButtons);
+	    
+	    myFrame.pack();
+	    myFrame.setVisible(true); 
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		Object control = event.getSource();
+		if (control == orderButton) {
+			String pizzaSize = "";
+			String name = customerName.getText();
+			if (small.isSelected()) {
+				pizzaSize = "small";
+			}
+			else if(medium.isSelected()) {
+				pizzaSize = "medium";
+			}
+			else if(large.isSelected()) {
+				pizzaSize = "large";
+			}
+			String crustType = (String) crust.getSelectedItem();
+			String topping = toppings.getSelectedValue();
+			String extra = " ";
+			if (breadStick.isSelected()) {
+				extra += "breadsticks";
+			}
+			if (salad.isSelected()) {
+				extra += "salad";
+			}
+			if (soda.isSelected()) {
+				extra += "soda";
+			} 
+			String comment = comments.getText();
+			JOptionPane.showMessageDialog(mainPanel, "Customer " + name + " has ordered:\n" + pizzaSize + "\n" + crustType + " crust pizza" + "\nWith: " + topping + "\n" + extra + "\nComments:" + comment);
+			
+		}
+		
+	}
+
+}

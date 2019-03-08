@@ -1,0 +1,40 @@
+package pizzaPlace;
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class PizzaPlace {
+	JPanel mainPanel;
+	JPanel userName;
+	JTextField customerName;
+
+	public static void main(String[] args) {
+		new PizzaPlace();
+
+	}
+	
+	public PizzaPlace() {
+		
+		JFrame myFrame = new JFrame("Pizza Place");
+	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainPanel = (JPanel)myFrame.getContentPane();
+	    
+	    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+	    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    
+	    userName = new JPanel();
+	    JLabel userLable = new JLabel("Customer Name:");
+	    userName.add(userLable);
+	    customerName = new JTextField( "John Snow", 30);
+	    userName.add(customerName);
+	    mainPanel.add(userName);
+	    
+	    mainPanel.add(userName);
+	    
+	    myFrame.pack();
+	    myFrame.setVisible(true); 
+
+	}
+
+}

@@ -1,0 +1,82 @@
+package baseballStats;
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.*;
+
+public class BaseballStats {
+	JPanel mainPanel;
+	
+	JPanel playerNamePanel;
+	JLabel playerNameLabel;
+	JTextField playerName;
+	
+	JPanel spinnersPanel;
+	JLabel g1HitsLabel;
+	JSpinner g1Hits;
+	JLabel g2HitsLabel;
+	JSpinner g2Hits;
+	JLabel g3HitsLabel;
+	JSpinner g3Hits;
+	JLabel g4HitsLabel;
+	JSpinner g4Hits;
+	JLabel g5HitsLabel;
+	JSpinner g6Hits;
+	
+	JPanel addedPlayersPanel;
+	JLabel currentPlayersLabel;
+	JTextArea playersBox;
+	JScrollPane playersBoxScroll;
+	
+	JPanel buttons;
+	JButton addPlayer;
+	JButton resetValues;
+	JButton showStats;
+	
+
+	public static void main(String[] args) {
+		new BaseballStats();
+
+	}
+	
+	public BaseballStats() {
+		JFrame myFrame = new JFrame("Baseball Stats");
+	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainPanel = (JPanel)myFrame.getContentPane();
+	    
+	    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+	    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    
+	    playerNamePanel = new JPanel();
+	    playerNameLabel = new JLabel("Player Name");
+	    playerNamePanel.add(playerNameLabel);
+	    playerName = new JTextField("", 20);
+	    playerNamePanel.add(playerName);
+	    mainPanel.add(playerNamePanel);
+	    
+	    spinnersPanel = new JPanel();
+	    g1HitsLabel = new JLabel("Game 1 Hits:");
+	    spinnersPanel.add(g1HitsLabel);
+	    g2HitsLabel = new JLabel("Game 2 Hits:");
+	    spinnersPanel.add(g2HitsLabel);
+	    g3HitsLabel = new JLabel("Game 3 Hits:");
+	    spinnersPanel.add(g3HitsLabel);
+	    g4HitsLabel = new JLabel("Game 4 Hits:");
+	    spinnersPanel.add(g4HitsLabel);
+	    g5HitsLabel = new JLabel("Game 5 Hits:");
+	    spinnersPanel.add(g5HitsLabel);
+	    mainPanel.add(spinnersPanel);
+	    
+	    addedPlayersPanel = new JPanel();
+	    currentPlayersLabel = new JLabel("Current Players:");
+	    addedPlayersPanel.add(currentPlayersLabel);
+	    playersBox = new JTextArea(5, 20);
+	    playersBox.setLineWrap(true);
+	    playersBoxScroll = new JScrollPane(playersBox);
+	    
+	    
+	    myFrame.pack();
+	    myFrame.setVisible(true);
+		
+	}
+
+}

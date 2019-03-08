@@ -1,0 +1,60 @@
+package pizzaPlace;
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class PizzaPlace {
+	JPanel mainPanel;
+	JPanel userName;
+	JTextField customerName;
+	JLabel userLable;
+	JPanel radioButtons;
+	JLabel pizzaSizeLabel;
+	JRadioButton small;
+	JRadioButton medium;
+	JRadioButton large;
+
+	public static void main(String[] args) {
+		new PizzaPlace();
+
+	}
+	
+	public PizzaPlace() {
+		
+		JFrame myFrame = new JFrame("Pizza Place");
+	    myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainPanel = (JPanel)myFrame.getContentPane();
+	    
+	    mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+	    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    
+	    userName = new JPanel();
+	    userLable = new JLabel("Customer Name:");
+	    userName.add(userLable);
+	    customerName = new JTextField();
+	    userName.add(customerName);
+	    mainPanel.add(userName);
+	    
+	    radioButtons = new JPanel();
+	    pizzaSizeLabel = new JLabel("Pizza Size:");
+	    radioButtons.add(pizzaSizeLabel);
+	    ButtonGroup radioGroup = new ButtonGroup();
+	    small = new JRadioButton("Small");
+	    medium = new JRadioButton("Medium");
+	    large = new JRadioButton("Large");
+	    radioGroup.add(small);
+	    radioGroup.add(medium);
+	    radioGroup.add(large);
+	    radioButtons.add(small);
+	    radioButtons.add(medium);
+	    radioButtons.add(large);
+	    mainPanel.add(radioButtons);
+	    
+	    
+	    myFrame.pack();
+	    myFrame.setVisible(true); 
+
+	}
+
+}
